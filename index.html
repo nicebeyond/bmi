@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
+    <base href="/bmi/">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -126,18 +127,18 @@
     <div class="card">
         <h1>BMI Calculator</h1>
         <div class="unit-toggle">
-            <button class="unit-btn active" onclick="switchUnit('metric')">公制 (kg/m)</button>
-            <button class="unit-btn" onclick="switchUnit('imperial')">美制 (lbs/in)</button>
+            <button class="unit-btn active" onclick="switchUnit('metric')">Metric (kg/m)</button>
+            <button class="unit-btn" onclick="switchUnit('imperial')">Imperial (lbs/in)</button>
         </div>
         <div class="form-group">
-            <label id="weight-label">体重 (kg)</label>
-            <input type="number" id="weight" placeholder="例如：70" step="0.1">
+            <label id="weight-label">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 70" step="0.1">
         </div>
         <div class="form-group">
-            <label id="height-label">身高 (cm)</label>
-            <input type="number" id="height" placeholder="例如：170" step="0.1">
+            <label id="height-label">Height (cm)</label>
+            <input type="number" id="height" placeholder="e.g. 170" step="0.1">
         </div>
-        <button class="calc-btn" onclick="calculate()">计算 BMI</button>
+        <button class="calc-btn" onclick="calculate()">Calculate BMI</button>
         <div class="result" id="result">
             <div class="bmi-label">Your BMI</div>
             <div class="bmi-value" id="bmi-value">0</div>
@@ -153,10 +154,10 @@
             document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('active'));
             if (unit === 'metric') {
                 document.querySelectorAll('.unit-btn')[0].classList.add('active');
-                document.getElementById('weight-label').textContent = '体重 (kg)';
-                document.getElementById('height-label').textContent = '身高 (cm)';
-                document.getElementById('weight').placeholder = '例如：70';
-                document.getElementById('height').placeholder = '例如：170';
+                document.getElementById('weight-label').textContent = 'Weight (kg)';
+                document.getElementById('height-label').textContent = 'Height (cm)';
+                document.getElementById('weight').placeholder = 'e.g. 70';
+                document.getElementById('height').placeholder = 'e.g. 170';
             } else {
                 document.querySelectorAll('.unit-btn')[1].classList.add('active');
                 document.getElementById('weight-label').textContent = 'Weight (lbs)';
@@ -174,7 +175,7 @@
             const height = parseFloat(document.getElementById('height').value);
 
             if (!weight || !height || weight <= 0 || height <= 0) {
-                alert('请输入有效的身高和体重');
+                alert('Please enter valid height and weight');
                 return;
             }
 
@@ -193,16 +194,16 @@
             const catEl = document.getElementById('bmi-category');
             catEl.className = 'bmi-category';
             if (bmi < 18.5) {
-                catEl.textContent = 'Underweight / 偏瘦';
+                catEl.textContent = 'Underweight';
                 catEl.classList.add('cat-underweight');
             } else if (bmi < 25) {
-                catEl.textContent = 'Normal / 正常';
+                catEl.textContent = 'Normal Weight';
                 catEl.classList.add('cat-normal');
             } else if (bmi < 30) {
-                catEl.textContent = 'Overweight / 偏胖';
+                catEl.textContent = 'Overweight';
                 catEl.classList.add('cat-overweight');
             } else {
-                catEl.textContent = 'Obese / 肥胖';
+                catEl.textContent = 'Obese';
                 catEl.classList.add('cat-obese');
             }
 
