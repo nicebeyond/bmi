@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .instructions {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .instructions h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: opacity 0.3s;
+        }
+        .download-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <p class="subtitle">Scan QR Code to Calculate Your BMI</p>
+        
+        <div id="qrcode"></div>
+        
+        <div class="instructions">
+            <h3>How to Use:</h3>
+            <ol>
+                <li>Scan this QR code with your smartphone camera or QR code reader</li>
+                <li>Click the link to open the BMI Calculator</li>
+                <li>Choose your preferred unit system (Metric or Imperial)</li>
+                <li>Enter your weight and height</li>
+                <li>Click "Calculate BMI" to see your result</li>
+            </ol>
+        </div>
+
+        <p style="font-size: 12px; color: #999; margin-top: 20px;">
+            Formula: BMI = Weight / (Height × Height)
+        </p>
+    </div>
+
+    <script>
+        // Generate QR code with link to BMI calculator
+        const bmiCalculatorUrl = 'https://nicebeyond.github.io/bmi/';
+        
+        new QRCode(document.getElementById('qrcode'), {
+            text: bmiCalculatorUrl,
+            width: 300,
+            height: 300,
+            colorDark: '#667eea',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
